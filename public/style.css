@@ -1,0 +1,106 @@
+body {
+  font-family: sans-serif;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+}
+
+
+
+
+#mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+#contentContainer{
+    display: flex;
+    order: 0;
+    width: 40%;
+}
+
+#Content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#adsrHeader h2{
+  order: 1;
+}
+
+#adsrDials{
+  display: flex;
+  order:1;
+}
+
+#effectsContainer, {
+  display: flex;
+  flex-direction: row;
+  order: 3;
+  margin: 0;
+
+}
+
+#delayContainer, #filterContainer{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+#filterContainer{
+  display: flex;
+  height: 40%
+}
+
+.delayHeader{
+  margin: 0;
+}
+#delayFeedbackDiv, #delayWetDiv{
+  display: flex;
+  width: 40%;
+  margin: 0;
+  padding: 0;
+}
+
+#sequencerButtonContainer{
+  display: flex;
+ border-color: red;
+}
+
+#startArpeggiator{
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 100px;
+}
+
+#sequencerContainer{
+  display:flex;
+  flex-direction: column;
+  order: 4;
+  width: 600px;
+}
+
+
+#keyboardContainer{
+  display: flex;
+  order: 6;
+}
+
+#attackDial, #decayDial, #sustainDial, #releaseDial {
+  width: 5%;
+}
+
+
+
+
+
+

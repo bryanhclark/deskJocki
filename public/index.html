@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width initial-scale=1.0'>
+  <title>reactDawg</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script type="text/javascript" src="./build/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="./build/toneJS.js"></script>
+  <script type="text/javascript" src="./build/NexusUI.js"></script>
+  <script type="text/javascript" src="./build/interface.js"></script>
+  <script defer src="bundle.js"></script>
+</head>
+
+<body>
+  <nav class='teal lighten-2'>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">COMEUPWITHABETTERNAME</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <a href="https://tonejs.github.io/">Tone.js</a>
+        </li>
+        <li>
+          <a href="https://nexus-js.github.io/ui/">Nexus UI</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div id="mainContainer">
+    <div id="sequencerButtonContainer">
+      <div id='startArpeggiator'></div>
+    </div>
+    <div id="contentContainer" class='card'>
+      <div class="card-content">
+        <span class="card-title grey-text text-darken-4">Card Title</span>
+        <div id="Content"></div>
+      </div>
+    </div>
+    <div id="adsrHeader">
+      <h3>ADSR</h3>
+    </div>
+    <div id="adsrDials">
+      <div id="attackDial" className='dial'></div>
+      <div id="decayDial" className='dial'></div>
+      <div id="sustainDial" className='dial'></div>
+      <div id="releaseDial" className='dial'></div>
+    </div>
+    <div id="effectsContainer">
+      <div id='delayContainer'>
+        <h3>Delay</h3>
+        <div class="delayHeader">
+          Feedback
+        </div>
+        <div id="delayFeedbackDiv"></div>
+
+        <div class="delayHeader">
+          Dry/Wet
+        </div>
+        <div id="delayWetDiv"></div>
+      </div>
+      <div id="filterContainer">
+        Filter CuttoFF
+        <div id="filter"></div>
+      </div>
+      <div id="chorusContainer">
+        <div id="chorusHeader">
+          <h3>Chorus</h3>
+        </div>
+        Delay
+        <div id="chorusDelaySlider"></div>
+        Dry/Wet
+        <div id="chorusWet"></div>
+        Feedback
+        <div id="chorusFeedback"></div>
+        Depth
+        <div id="chorusDepth"></div>
+      </div>
+    </div>
+    <div id="sequencerContainer">
+      <div id="sequencer"></div>
+      <div id='sequencerStart'></div>
+      <div id="sequencerBPMSlider"></div>
+    </div>
+
+    <div id="keyboardContainer">
+      <div id="keyboard"></div>
+    </div>
+    <div id="drumMachineContainer">
+      <div id="drumMachine"></div>
+      <div id='drumMachineButton'></div>
+    </div>
+  </div>
+</body>
+
+</html>
