@@ -1,103 +1,143 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Dosis', sans-serif;
+  color: #1B1B1E;
+  background-color: #F1E9DA;
 }
-
-
-a {
-  text-decoration: none;
-}
-
-label {
-  display: block;
-}
-
 
 
 
 #mainContainer {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
 }
 
-#contentContainer{
-    display: flex;
-    order: 0;
-    width: 40%;
+#waveform {
+  width: 101vw;
+  height: 70vh;
 }
 
-#Content{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#adsrHeader h2{
-  order: 1;
-}
-
-#adsrDials{
-  display: flex;
-  order:1;
-}
-
-#effectsContainer, {
-  display: flex;
-  flex-direction: row;
-  order: 3;
-  margin: 0;
-
-}
-
-#delayContainer, #filterContainer{
+#headerContainer{
   display: flex;
   flex-direction: column;
-  width: 60%;
+  margin: 20px;
 }
 
-#filterContainer{
+
+#titleContainer {
   display: flex;
-  height: 40%
+  margin: auto;
+  padding-bottom: 30px;
 }
 
-.delayHeader{
-  margin: 0;
-}
-#delayFeedbackDiv, #delayWetDiv{
-  display: flex;
-  width: 40%;
-  margin: 0;
-  padding: 0;
-}
-
-#sequencerButtonContainer{
-  display: flex;
- border-color: red;
-}
-
-#startArpeggiator{
+#globalPlayStopContainer {
   display: flex;
   flex-direction: row;
-  width: 100px;
-  height: 100px;
+  margin: auto;
 }
 
-#sequencerContainer{
+#globalControlContainer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+#tempoSliderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#contentContainer {
+  display: flex;
+  justify-content: center; 
+}
+
+#sequencerContainer {
   display:flex;
   flex-direction: column;
-  order: 4;
-  width: 600px;
 }
 
-
-#keyboardContainer{
+#sequencerAndEffects {
   display: flex;
-  order: 6;
+  flex-direction: row;
+  margin: 5px;
 }
 
-#attackDial, #decayDial, #sustainDial, #releaseDial {
-  width: 5%;
+#effectsContainer {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
 }
+
+#adsrDials {
+  display: flex;
+  flex-direction: column
+}
+
+#chorusContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#delayContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#bassSequencerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#bassSequencerAndEffects {
+  display: flex;
+  flex-direction: row;
+}
+
+#bassEffects {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+
+#drumMachineHeader {
+  display: flex;
+}
+
+#drumVolumeContainer {
+  margin-top: 45px;
+}
+
+
+#drumMachineContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+#drumMachineAndEffects {
+  display: flex;
+  flex-direction: row;
+}
+
+#drumMachineEffects {
+  display: flex;
+  margin: auto;
+}
+
+#reverbContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+
+
+
 
 
 

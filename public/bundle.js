@@ -63,11 +63,63 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _ref;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var bassSequencer = new Nexus.Sequencer('#bassSequencer', {
+    size: [800, 350],
+    mode: 'toggle',
+    rows: 14,
+    columns: 32
+});
+
+//SEQUENCER COLOR OPTIONS
+bassSequencer.colorize("accent", "#0D86BA");
+bassSequencer.colorize('fill', "#363a3a");
+
+var bassLoop = [["C1", '8n'], ['D1', '8n'], ['E1', '8n'], ['F1', '8n'], ['G1', '8n'], ['A1', '8n'], ['B1', '8n'], ["C2", '8n'], ['D2', '8n'], ['E2', '8n'], ['F2', '8n'], ['G2', '8n'], ['A2', '8n'], ['B2', '8n']];
+
+var bassSynth = new Tone.MonoSynth((_ref = {
+    "volume": 7,
+    filter: {
+        Q: 2,
+        type: "lowshelf",
+        frequency: 200,
+        gain: -24
+    }
+}, _defineProperty(_ref, 'filter', {
+    type: "lowpass",
+    Q: 7,
+    frequency: 10000,
+    gain: -24
+}), _defineProperty(_ref, "envelope", {
+    "attack": 0.001,
+    "decay": 1,
+    "sustain": 0.4,
+    "release": 0.1
+}), _defineProperty(_ref, "filterEnvelope", {
+    "attack": 0.001,
+    "decay": 0.31,
+    "sustain": 1,
+    "baseFrequency": 150,
+    "octaves": 2.6
+}), _ref));
+
+module.exports = { bassSequencer: bassSequencer, bassLoop: bassLoop, bassSynth: bassSynth };
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91,22 +143,14 @@ var chorusFeedback = new Nexus.Slider('#chorusFeedback', {
 });
 var chorusDepth = new Nexus.Slider('#chorusDepth');
 
-chorusDelayTime.on('change', function (val) {
-    var newVal = val * 20;
-    chorus.delayTime = newVal;
-});
-
-chorusWet.on('change', function (val) {
-    chorus.wet.value = val;
-});
-
-chorusFeedback.on('change', function (val) {
-    chorus.feedback.value = val;
-});
-
-chorusDepth.on('change', function (val) {
-    chorus.depth = val;
-});
+chorusDelayTime.colorize("accent", "#FFE066");
+chorusDelayTime.colorize('fill', "#363a3a");
+chorusWet.colorize("accent", "#FFE066");
+chorusWet.colorize('fill', "#363a3a");
+chorusFeedback.colorize("accent", "#FFE066");
+chorusFeedback.colorize('fill', "#363a3a");
+chorusDepth.colorize("accent", "#FFE066");
+chorusDepth.colorize('fill', "#363a3a");
 
 module.exports = {
     chorus: chorus,
@@ -117,7 +161,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -127,41 +171,20 @@ var delay = new Tone.PingPongDelay({
     delayTime: '8n',
     feedback: 0.0,
     wet: 0.0
-}).toMaster();
+});
 
 var delayFeedbackDial = new Nexus.Slider('#delayFeedbackDiv');
 var delayWetDial = new Nexus.Slider('#delayWetDiv');
 
-delayFeedbackDial.on('change', function (val) {
-    delay.feedback.value = val;
-});
-delayWetDial.on('change', function (val) {
-    delay.wet.value = val;
-});
+delayFeedbackDial.colorize("accent", "#FFE066");
+delayFeedbackDial.colorize('fill', "#363a3a");
+delayWetDial.colorize("accent", "#FFE066");
+delayWetDial.colorize('fill', "#363a3a");
 
 module.exports = {
     delay: delay,
     delayFeedbackDial: delayFeedbackDial,
     delayWetDial: delayWetDial
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var attackDial = new Nexus.Dial('#attackDial');
-var decayDial = new Nexus.Dial('#decayDial');
-var sustainDial = new Nexus.Dial('#sustainDial');
-var releaseDial = new Nexus.Dial('#releaseDial');
-
-module.exports = {
-    attackDial: attackDial,
-    decayDial: decayDial,
-    sustainDial: sustainDial,
-    releaseDial: releaseDial
 };
 
 /***/ }),
@@ -171,7 +194,64 @@ module.exports = {
 "use strict";
 
 
-Tone.Transport.bpm.value = 80;
+var attackDial = new Nexus.Slider('#attackDial');
+var decayDial = new Nexus.Slider('#decayDial');
+var sustainDial = new Nexus.Slider('#sustainDial');
+var releaseDial = new Nexus.Slider('#releaseDial');
+
+attackDial.colorize("accent", "#FFE066");
+attackDial.colorize('fill', "#363a3a");
+decayDial.colorize("accent", "#FFE066");
+decayDial.colorize('fill', "#363a3a");
+sustainDial.colorize("accent", "#FFE066");
+sustainDial.colorize('fill', "#363a3a");
+releaseDial.colorize("accent", "#FFE066");
+releaseDial.colorize('fill', "#363a3a");
+
+module.exports = {
+    attackDial: attackDial,
+    decayDial: decayDial,
+    sustainDial: sustainDial,
+    releaseDial: releaseDial
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var distortion = new Tone.Distortion({
+    distortion: 0, // 0 to 1;
+    oversample: "none"
+});
+
+var distortionSlider = new Nexus.Slider('#distortionSlider');
+
+distortionSlider.on('change', function (val) {
+
+    distortion.distortion = val;
+    console.log(distortion.distortion);
+});
+
+distortionSlider.colorize("accent", "#0D86BA");
+distortionSlider.colorize('fill', "#363a3a");
+
+module.exports = { distortion: distortion, distortionSlider: distortionSlider };
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(11),
+    reverb = _require.reverb,
+    reverbRoomSizeSlider = _require.reverbRoomSizeSlider;
+
+var drumVolume = __webpack_require__(13);
 
 var drums = new Tone.Players({
     "hihat0": "./samples/hihat.wav",
@@ -186,21 +266,44 @@ var drums = new Tone.Players({
 
 }, function () {
     console.log('loaded');
-}).toMaster();
+}).chain(reverb, drumVolume, Tone.Master);
 
 var drumSequencer = new Nexus.Sequencer('#drumMachine', {
-    'size': [400, 200],
+    'size': [800, 200],
     'mode': 'toggle',
     'rows': 9,
-    'columns': 16
+    'columns': 32
 });
 
-var drumMachineButton = new Nexus.Button('#drumMachineButton');
+var drumVolumeSlider = new Nexus.Slider('#drumVolumeSlider', {
+    min: -64,
+    max: 6
+});
 
-module.exports = { drums: drums, drumSequencer: drumSequencer, drumMachineButton: drumMachineButton };
+drumVolumeSlider.on('change', function (val) {
+    drumVolume.volume.value = val;
+});
+
+var drumMuteButton = new Nexus.RadioButton('#drumMuteButton', {
+    'numberOfButtons': 1
+});
+
+drumMuteButton.on('change', function (val) {
+    if (val === 0) drumVolume.mute = true;else drumVolume.mute = false;
+});
+
+drumSequencer.colorize("accent", "#D81135");
+drumSequencer.colorize('fill', "#363a3a");
+
+drumVolumeSlider.colorize("accent", "#D81135");
+drumVolumeSlider.colorize('fill', "#363a3a");
+drumMuteButton.colorize("accent", "#D81135");
+drumMuteButton.colorize('fill', "#363a3a");
+
+module.exports = { drums: drums, drumSequencer: drumSequencer, drumVolume: drumVolume };
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -214,41 +317,6 @@ var envelope = new Tone.AmplitudeEnvelope({
 });
 
 module.exports = envelope;
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var piano = new Nexus.Piano('#keyboard', {
-    'size': [700, 125],
-    'mode': 'button', // 'button', 'toggle', or 'impulse'
-    'lowNote': 60,
-    'highNote': 80
-});
-
-module.exports = piano;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var filter = new Tone.Filter({
-    type: "lowpass",
-    frequency: 200,
-    rolloff: -12,
-    Q: 1,
-    gain: 5
-});
-
-var filterSlider = new Nexus.Slider('#filter');
-
-module.exports = { filter: filter, filterSlider: filterSlider };
 
 /***/ }),
 /* 7 */
@@ -269,27 +337,7 @@ var oscillator = new Tone.PolySynth(6, Tone.Synth, {
     }
 });
 
-var pattern = new Tone.Pattern(function (time, note) {
-    oscillator.triggerAttackRelease(note, 0.25);
-}, ["C4", "E4", "G4", "A4"]);
-
-var startButton = new Nexus.Button('#startArpeggiator');
-
-var playing = false;
-
-startButton.on('click', function (e) {
-
-    if (playing === false) {
-        pattern.start(0);
-        Tone.Transport.start();
-        playing = true;
-    } else {
-        pattern.stop();
-        playing = false;
-    }
-});
-
-module.exports = { pattern: pattern, startButton: startButton, oscillator: oscillator };
+module.exports = { oscillator: oscillator };
 
 /***/ }),
 /* 8 */
@@ -364,27 +412,27 @@ module.exports = {
 
 //SYNTH SEQUENCER MATRIX
 var sequencer = new Nexus.Sequencer("#sequencer", {
-    'size': [600, 300],
+    'size': [800, 350],
     'mode': 'toggle',
     'rows': 14,
-    'columns': 16
+    'columns': 32
 });
+
+//SEQUENCER COLOR OPTIONS
+sequencer.colorize("accent", "#FFE066");
+sequencer.colorize('fill', "#363a3a");
+
 //INVERTED BPM SLIDER
-var sequencerBPMSlider = new Nexus.Slider('#sequencerBPMSlider', {
-    min: 80,
-    max: 200
-});
+
 //NOTES IN THE SEQUENCER MATRIX
 var loop = [["C3", '8n'], ['D3', '8n'], ['E3', '8n'], ['F3', '8n'], ['G3', '8n'], ['A3', '8n'], ['B3', '8n'], ["C4", '8n'], ['D4', '8n'], ['E4', '8n'], ['F4', '8n'], ['G4', '8n'], ['A4', '8n'], ['B4', '8n']];
 
 //SYNTH SEQUENCER START/STOP BUTTON
-var sequencerButton = new Nexus.Button('#sequencerStart');
+
 
 module.exports = {
     loop: loop,
-    sequencer: sequencer,
-    sequencerBPMSlider: sequencerBPMSlider,
-    sequencerButton: sequencerButton
+    sequencer: sequencer
 };
 
 /***/ }),
@@ -575,66 +623,193 @@ module.exports = {
 "use strict";
 
 
-var keyboard = __webpack_require__(5);
+var reverb = new Tone.Freeverb({
+    roomSize: 0,
+    dampening: 3000
+});
 
-var _require = __webpack_require__(2),
+var reverbRoomSizeSlider = new Nexus.Slider('#reverbRoomSizeSlider');
+
+reverbRoomSizeSlider.on('change', function (val) {
+    console.log(reverb.roomSize.value);
+    reverb.roomSize.value = val;
+});
+
+reverbRoomSizeSlider.colorize("accent", "#D81135");
+reverbRoomSizeSlider.colorize('fill', "#363a3a");
+
+module.exports = { reverb: reverb, reverbRoomSizeSlider: reverbRoomSizeSlider };
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(3),
     attackDial = _require.attackDial,
     decayDial = _require.decayDial,
     sustainDial = _require.sustainDial,
     releaseDial = _require.releaseDial;
 
-var _require2 = __webpack_require__(1),
-    delay = _require2.delay,
-    delayFeedbackDial = _require2.delayFeedbackDial,
-    delayWetDial = _require2.delayWetDial;
+var _require2 = __webpack_require__(4),
+    distortion = _require2.distortion,
+    distortionSlider = _require2.distortionSlider;
 
-var _require3 = __webpack_require__(7),
-    pattern = _require3.pattern,
-    startButton = _require3.startButton,
-    oscillator = _require3.oscillator;
+var _require3 = __webpack_require__(2),
+    delay = _require3.delay,
+    delayFeedbackDial = _require3.delayFeedbackDial,
+    delayWetDial = _require3.delayWetDial;
 
-var _require4 = __webpack_require__(8),
-    waveform = _require4.waveform,
-    fft = _require4.fft;
+var _require4 = __webpack_require__(7),
+    oscillator = _require4.oscillator;
 
-var _require5 = __webpack_require__(10),
-    playNote = _require5.playNote,
-    releaseNote = _require5.releaseNote;
+var _require5 = __webpack_require__(8),
+    waveform = _require5.waveform,
+    fft = _require5.fft;
 
-var _require6 = __webpack_require__(6),
-    filter = _require6.filter,
-    filterSlider = _require6.filterSlider;
+var _require6 = __webpack_require__(10),
+    playNote = _require6.playNote,
+    releaseNote = _require6.releaseNote;
 
 var _require7 = __webpack_require__(9),
     sequencer = _require7.sequencer,
-    sequencerBPMSlider = _require7.sequencerBPMSlider,
-    sequencerButton = _require7.sequencerButton,
     loop = _require7.loop;
 
-var _require8 = __webpack_require__(0),
+var _require8 = __webpack_require__(1),
     chorus = _require8.chorus,
     chorusDelayTime = _require8.chorusDelayTime,
     chorusWet = _require8.chorusWet,
     chorusFeedback = _require8.chorusFeedback,
     chorusDepth = _require8.chorusDepth;
 
-var _require9 = __webpack_require__(3),
+var _require9 = __webpack_require__(5),
     drums = _require9.drums,
-    drumSequencer = _require9.drumSequencer,
-    drumMachineButton = _require9.drumMachineButton;
+    drumSequencer = _require9.drumSequencer;
 
-var envelope = __webpack_require__(4);
+var envelope = __webpack_require__(6);
+var bassVolume = __webpack_require__(13);
+var synthVolume = __webpack_require__(13);
 
-var context = new (window.AudioContext || window.webkitAudioContext)();
-var analyser = context.createAnalyser();
+var _require10 = __webpack_require__(0),
+    bassSequencer = _require10.bassSequencer,
+    bassLoop = _require10.bassLoop,
+    bassSynth = _require10.bassSynth;
+// const context = new (window.AudioContext || window.webkitAudioContext)();
+// const analyser = context.createAnalyser();
+
 
 //MAIN INTRUMENT CHAIN
-oscillator.chain(chorus, delay, waveform).toMaster();
+
+
+oscillator.chain(chorus, delay, synthVolume, waveform, Tone.Master);
+
+//GLOBAL PLAY/PAUSE CONTROLS
+
+
+var globalPlayButton = document.getElementById('globalPlayButton');
+var globalStopButton = document.getElementById("globalStopButton");
+globalPlayButton.addEventListener('click', function (e) {
+    event.preventDefault();
+    Tone.Transport.start();
+    [drumSequencer, bassSequencer, sequencer].forEach(function (k) {
+        return k.start();
+    });
+});
+
+globalStopButton.addEventListener('click', function (e) {
+    event.preventDefault();
+    Tone.Transport.stop();
+    [drumSequencer, bassSequencer, sequencer].forEach(function (k) {
+        k.stepper.value = -1;
+        k.stop();
+    });
+});
+
+//global tempo slider
+Tone.Transport.bpm.value = 40;
+var globalTempoSlider = new Nexus.Slider('#globalTempoSlider', {
+    min: 60,
+    max: 200
+});
+
+globalTempoSlider.on('change', function (val) {
+    Tone.Transport.bpm.value = parseInt(val);
+    [drumSequencer, bassSequencer, sequencer].forEach(function (k) {
+        k.interval.ms(parseInt(val));
+        console.log(k.interval.rate);
+    });
+});
+
+//GLOBAL VOLUME CONTROLS
+var globalVolumeSlider = new Nexus.Slider('#globalVolumeSlider', {
+    min: -24,
+    max: 6
+});
+
+globalVolumeSlider.on('change', function (val) {
+    if (val === -24) Tone.Master.mute = true;
+    Tone.Master.volume.value = Math.floor(val);
+});
+
+globalVolumeSlider.colorize('fill', "#363a3a");
+globalTempoSlider.colorize('fill', "#363a3a");
 
 //ALLOWS THE KEYBOARD TO PLAY THE NOTES
 oscillator.playOrReleaseNote = function (note, action, visualKey) {
     if (action === 'attack') oscillator.triggerAttack(note, null, 10);else if (action === 'release') oscillator.triggerRelease(note);
 };
+
+//SYNTH VOLUME CONTROLS
+var synthVolumeSlider = new Nexus.Slider('#synthVolumeSlider', {
+    min: -64,
+    max: 6
+});
+
+synthVolumeSlider.on('change', function (val) {
+    synthVolume.volume.value = val;
+});
+
+var synthMuteButton = new Nexus.RadioButton('#synthMuteButton', {
+    'numberOfButtons': 1
+});
+
+synthVolumeSlider.colorize("accent", "#FFE066");
+synthVolumeSlider.colorize('fill', "#363a3a");
+synthMuteButton.colorize("accent", "#FFE066");
+synthMuteButton.colorize('fill', "#363a3a");
+
+synthMuteButton.on('change', function (val) {
+    if (val === 0) synthVolume.mute = true;else synthVolume.mute = false;
+});
+
+delayFeedbackDial.on('change', function (val) {
+    delay.feedback.value = val;
+});
+delayWetDial.on('change', function (val) {
+    delay.wet.value = val;
+});
+
+chorusDelayTime.on('change', function (val) {
+    var newVal = val * 20;
+    chorus.delayTime = newVal;
+});
+
+chorusWet.on('change', function (val) {
+    chorus.wet.value = val;
+});
+
+chorusFeedback.on('change', function (val) {
+    chorus.feedback.value = val;
+});
+
+chorusDepth.on('change', function (val) {
+    chorus.depth = val;
+});
+
+//MAIN START/STOP CONTROLS
+
 
 //ADSR DIAL CONTROLS
 //attack
@@ -661,61 +836,55 @@ releaseDial.on('change', function (val) {
         voice.envelope.release = val;
     });
 });
-
-//SYNTH SEQUENCER CONTROLS
-sequencerBPMSlider.on('change', function (val) {
-    sequencer.interval.rate = Math.floor(val);
-});
-
 //FUNCTION THAT PLAYS THE NOTES WHEN CLICKED
 sequencer.on('step', function (event) {
-    for (var i = 0; i < event.length; i++) {
+    for (var i = 0; i <= event.length; i++) {
         if (event[i]) oscillator.triggerAttackRelease(loop[i][0], loop[i][1]);
     }
 });
 
-//DONT DELETE THIS
-var isPlaying = false;
-////SEQUENCER ON/OFF Button
-sequencerButton.on('click', function (e) {
-    if (isPlaying === false) {
-        isPlaying = true;
-        sequencer.start();
-    } else {
-        isPlaying = false;
-        sequencer.stop();
+//BASS SYNTH STUFF
+
+bassSynth.chain(distortion, bassVolume, Tone.Master);
+
+bassSequencer.on('step', function (event) {
+    for (var i = 0; i <= event.length; i++) {
+        if (event[i]) {
+            bassSynth.triggerAttackRelease(bassLoop[i][0], '16n');
+        }
     }
 });
 
-// keyboard.on('change', function (v) {
-//     console.log(v);
-//     if (v.state === true) oscillator.triggerAttack(v.note * 5);
-//     else oscillator.triggerRelease();
+var bassVolumeSlider = new Nexus.Slider('#bassVolumeSlider', {
+    min: -64,
+    max: 6
+});
 
-// })
+bassVolumeSlider.on('change', function (val) {
+    bassVolume.volume.value = val;
+});
 
+var bassMuteButton = new Nexus.RadioButton('#bassMuteButton', {
+    'numberOfButtons': 1
+});
+
+bassMuteButton.on('change', function (val) {
+    if (val === 0) bassVolume.mute = true;else bassVolume.mute = false;
+});
+
+bassVolumeSlider.colorize("accent", "#0D86BA");
+bassVolumeSlider.colorize('fill', "#363a3a");
+bassMuteButton.colorize("accent", "#0D86BA");
+bassMuteButton.colorize('fill', "#363a3a");
 
 var instruments = ["kick0", "kick1", "kick2", "snare0", "snare1", "snare2", "hihat0", "hihat1", "hihat2"];
 
 //DRUM MACHINE
 drumSequencer.on('step', function (event) {
-    for (var i = 0; i < event.length; i++) {
+    for (var i = 0; i <= event.length; i++) {
         if (event[i]) {
-            var currentInstrument = drums._players[instruments[i]];
-            currentInstrument.start();
+            drums._players[instruments[i]].start();
         };
-    }
-});
-
-var drumMachineIsPlaying = false;
-
-drumMachineButton.on('click', function (e) {
-    if (drumMachineIsPlaying === false) {
-        drumMachineIsPlaying = true;
-        drumSequencer.start();
-    } else {
-        drumMachineIsPlaying = false;
-        drumSequencer.stop();
     }
 });
 
@@ -725,6 +894,20 @@ window.addEventListener('keydown', function (e) {
 window.addEventListener('keyup', function (e) {
     return releaseNote(e, oscillator);
 });
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var volume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = volume;
 
 /***/ })
 /******/ ]);

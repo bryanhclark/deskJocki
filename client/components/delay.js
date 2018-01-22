@@ -2,18 +2,20 @@ const delay = new Tone.PingPongDelay({
     delayTime: '8n',
     feedback: 0.0,
     wet: 0.0
-}).toMaster()
+})
 
 
 const delayFeedbackDial = new Nexus.Slider('#delayFeedbackDiv')
 const delayWetDial = new Nexus.Slider('#delayWetDiv')
 
-delayFeedbackDial.on('change', (val) => {
-    delay.feedback.value = val;
-})
-delayWetDial.on('change', (val) => {
-    delay.wet.value = val;
-})
+delayFeedbackDial.colorize("accent", "#FFE066")
+delayFeedbackDial.colorize('fill', "#363a3a")
+delayWetDial.colorize("accent", "#FFE066")
+delayWetDial.colorize('fill', "#363a3a")
+
+
+
+
 
 
 module.exports = {

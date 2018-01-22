@@ -10,26 +10,6 @@ const oscillator = new Tone.PolySynth(6, Tone.Synth, {
     }
 })
 
-const pattern = new Tone.Pattern((time, note) => {
-    oscillator.triggerAttackRelease(note, 0.25);
-}, ["C4", "E4", "G4", "A4"])
-
-
-const startButton = new Nexus.Button('#startArpeggiator')
-
-let playing = false;
-
-startButton.on('click', (e) => {
-
-    if (playing === false) {
-        pattern.start(0)
-        Tone.Transport.start();
-        playing = true;
-    } else {
-        pattern.stop();
-        playing = false
-    }
-})
 
 
 
@@ -37,7 +17,9 @@ startButton.on('click', (e) => {
 
 
 
-module.exports = { pattern, startButton, oscillator }
+
+
+module.exports = { oscillator }
 
 
 

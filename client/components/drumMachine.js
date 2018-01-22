@@ -1,4 +1,5 @@
-Tone.Transport.bpm.value = 80;
+const { reverb, reverbRoomSizeSlider } = require('./reverb')
+const drumVolume = require('./volume')
 
 const drums = new Tone.Players({
     "hihat0": "./samples/hihat.wav",
@@ -14,7 +15,7 @@ const drums = new Tone.Players({
 },
     () => {
         console.log('loaded')
-    }).toMaster();
+    }).chain(reverb, drumVolume, Tone.Master)
 
 
 
@@ -22,15 +23,39 @@ const drums = new Tone.Players({
 
 
 const drumSequencer = new Nexus.Sequencer('#drumMachine', {
-    'size': [400, 200],
+    'size': [800, 200],
     'mode': 'toggle',
     'rows': 9,
-    'columns': 16
+    'columns': 32
 })
 
 
-const drumMachineButton = new Nexus.Button('#drumMachineButton')
+const drumVolumeSlider = new Nexus.Slider('#drumVolumeSlider', {
+    min: -64,
+    max: 6
+})
+
+drumVolumeSlider.on('change', (val) => {
+    drumVolume.volume.value = val;
+})
+
+const drumMuteButton = new Nexus.RadioButton('#drumMuteButton', {
+    'numberOfButtons': 1
+})
+
+drumMuteButton.on('change', (val) => {
+    if (val === 0) drumVolume.mute = true
+    else drumVolume.mute = false
+})
+
+drumSequencer.colorize("accent", "#D81135")
+drumSequencer.colorize('fill', "#363a3a")
+
+drumVolumeSlider.colorize("accent", "#D81135")
+drumVolumeSlider.colorize('fill', "#363a3a")
+drumMuteButton.colorize("accent", "#D81135")
+drumMuteButton.colorize('fill', "#363a3a")
 
 
-module.exports = { drums, drumSequencer, drumMachineButton }
+module.exports = { drums, drumSequencer, drumVolume }
 

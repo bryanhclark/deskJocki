@@ -18,24 +18,14 @@ const chorusFeedback = new Nexus.Slider('#chorusFeedback', {
 const chorusDepth = new Nexus.Slider('#chorusDepth')
 
 
-
-chorusDelayTime.on('change', (val) => {
-    let newVal = (val * 20)
-    chorus.delayTime = newVal;
-})
-
-chorusWet.on('change', (val) => {
-    chorus.wet.value = val
-})
-
-chorusFeedback.on('change', (val) => {
-    chorus.feedback.value = val
-})
-
-chorusDepth.on('change', (val) => {
-    chorus.depth = val
-})
-
+chorusDelayTime.colorize("accent", "#FFE066")
+chorusDelayTime.colorize('fill', "#363a3a")
+chorusWet.colorize("accent", "#FFE066")
+chorusWet.colorize('fill', "#363a3a")
+chorusFeedback.colorize("accent", "#FFE066")
+chorusFeedback.colorize('fill', "#363a3a")
+chorusDepth.colorize("accent", "#FFE066")
+chorusDepth.colorize('fill', "#363a3a")
 
 
 
