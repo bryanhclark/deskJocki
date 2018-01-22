@@ -1,5 +1,6 @@
 const { reverb, reverbRoomSizeSlider } = require('./reverb')
 const drumVolume = require('./volume')
+const { waveform, fft } = require('./oscilloscope')
 
 const drums = new Tone.Players({
     "hihat0": "./samples/hihat.wav",
@@ -15,7 +16,7 @@ const drums = new Tone.Players({
 },
     () => {
         console.log('loaded')
-    }).chain(reverb, drumVolume, Tone.Master)
+    }).chain(reverb, drumVolume, waveform, Tone.Master)
 
 
 

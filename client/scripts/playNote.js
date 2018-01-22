@@ -6,13 +6,9 @@ let keysAllowed = {};
 
 
 const playNote = (event, oscillator) => {
-    // use for computer keyboard - do keyDown events measure velocity?
-    // prevents Tab from shifting focus
     if (event.key === 'Tab') event.preventDefault();
-    // since keyDown events eventually re-trigger when a key is held down, storing them in an object and using this check will prevent the note from interrupting/replaying
     if (keysAllowed[event.key] === false) return;
     keysAllowed[event.key] = false;
-    // based on event.key => toggle a certain oscillator.key (visual), and play a certain note using Tone
     switch (event.key) {
         case 'Tab': oscillator.playOrReleaseNote('C3', 'attack', 0)
             break;

@@ -267,6 +267,10 @@ var _require = __webpack_require__(12),
 
 var drumVolume = __webpack_require__(0);
 
+var _require2 = __webpack_require__(9),
+    waveform = _require2.waveform,
+    fft = _require2.fft;
+
 var drums = new Tone.Players({
     "hihat0": "./samples/hihat.wav",
     "hihat1": "./samples/hihat2.wav",
@@ -280,7 +284,7 @@ var drums = new Tone.Players({
 
 }, function () {
     console.log('loaded');
-}).chain(reverb, drumVolume, Tone.Master);
+}).chain(reverb, drumVolume, waveform, Tone.Master);
 
 var drumSequencer = new Nexus.Sequencer('#drumMachine', {
     'size': [800, 200],
@@ -459,13 +463,9 @@ module.exports = {
 var keysAllowed = {};
 
 var playNote = function playNote(event, oscillator) {
-    // use for computer keyboard - do keyDown events measure velocity?
-    // prevents Tab from shifting focus
     if (event.key === 'Tab') event.preventDefault();
-    // since keyDown events eventually re-trigger when a key is held down, storing them in an object and using this check will prevent the note from interrupting/replaying
     if (keysAllowed[event.key] === false) return;
     keysAllowed[event.key] = false;
-    // based on event.key => toggle a certain oscillator.key (visual), and play a certain note using Tone
     switch (event.key) {
         case 'Tab':
             oscillator.playOrReleaseNote('C3', 'attack', 0);
@@ -702,9 +702,9 @@ var _require9 = __webpack_require__(6),
     drums = _require9.drums,
     drumSequencer = _require9.drumSequencer;
 
+var bassVolume = __webpack_require__(14);
+var synthVolume = __webpack_require__(15);
 var envelope = __webpack_require__(7);
-var bassVolume = __webpack_require__(0);
-var synthVolume = __webpack_require__(0);
 
 var _require10 = __webpack_require__(1),
     bassSequencer = _require10.bassSequencer,
@@ -859,7 +859,7 @@ sequencer.on('step', function (event) {
 
 //BASS SYNTH STUFF
 
-bassSynth.chain(distortion, bassVolume, Tone.Master);
+bassSynth.chain(distortion, bassVolume, waveform, Tone.Master);
 
 bassSequencer.on('step', function (event) {
     for (var i = 0; i <= event.length; i++) {
@@ -908,6 +908,34 @@ window.addEventListener('keydown', function (e) {
 window.addEventListener('keyup', function (e) {
     return releaseNote(e, oscillator);
 });
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bassVolume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = bassVolume;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var synthVolume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = synthVolume;
 
 /***/ })
 /******/ ]);

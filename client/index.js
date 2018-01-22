@@ -7,9 +7,10 @@ const { playNote, releaseNote } = require('./scripts/playNote')
 const { sequencer, loop } = require('./components/sequencer')
 const { chorus, chorusDelayTime, chorusWet, chorusFeedback, chorusDepth } = require('./components/chorus')
 const { drums, drumSequencer } = require('./components/drumMachine')
+const bassVolume = require('./components/bassVolume')
+const synthVolume = require('./components/synthVolume')
 const envelope = require('./components/envelope')
-const bassVolume = require('./components/volume')
-const synthVolume = require('./components/volume')
+
 const { bassSequencer, bassLoop, bassSynth } = require('./components/bassSynth')
 // const context = new (window.AudioContext || window.webkitAudioContext)();
 // const analyser = context.createAnalyser();
@@ -161,7 +162,7 @@ sequencer.on('step', (event) => {
 
 //BASS SYNTH STUFF
 
-bassSynth.chain(distortion, bassVolume, Tone.Master)
+bassSynth.chain(distortion, bassVolume, waveform, Tone.Master)
 
 bassSequencer.on('step', (event) => {
     for (let i = 0; i <= event.length; i++) {
@@ -175,6 +176,8 @@ const bassVolumeSlider = new Nexus.Slider('#bassVolumeSlider', {
     min: -64,
     max: 6
 })
+
+
 
 bassVolumeSlider.on('change', (val) => {
     bassVolume.volume.value = val;
