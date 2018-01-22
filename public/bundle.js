@@ -63,11 +63,25 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var volume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = volume;
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -119,7 +133,7 @@ var bassSynth = new Tone.MonoSynth((_ref = {
 module.exports = { bassSequencer: bassSequencer, bassLoop: bassLoop, bassSynth: bassSynth };
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -161,7 +175,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -188,7 +202,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -216,7 +230,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -241,17 +255,17 @@ distortionSlider.colorize('fill', "#363a3a");
 module.exports = { distortion: distortion, distortionSlider: distortionSlider };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _require = __webpack_require__(11),
+var _require = __webpack_require__(12),
     reverb = _require.reverb,
     reverbRoomSizeSlider = _require.reverbRoomSizeSlider;
 
-var drumVolume = __webpack_require__(13);
+var drumVolume = __webpack_require__(0);
 
 var drums = new Tone.Players({
     "hihat0": "./samples/hihat.wav",
@@ -303,7 +317,7 @@ drumMuteButton.colorize('fill', "#363a3a");
 module.exports = { drums: drums, drumSequencer: drumSequencer, drumVolume: drumVolume };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -319,7 +333,7 @@ var envelope = new Tone.AmplitudeEnvelope({
 module.exports = envelope;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -340,7 +354,7 @@ var oscillator = new Tone.PolySynth(6, Tone.Synth, {
 module.exports = { oscillator: oscillator };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -404,7 +418,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -436,7 +450,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -617,7 +631,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -641,58 +655,58 @@ reverbRoomSizeSlider.colorize('fill', "#363a3a");
 module.exports = { reverb: reverb, reverbRoomSizeSlider: reverbRoomSizeSlider };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _require = __webpack_require__(3),
+var _require = __webpack_require__(4),
     attackDial = _require.attackDial,
     decayDial = _require.decayDial,
     sustainDial = _require.sustainDial,
     releaseDial = _require.releaseDial;
 
-var _require2 = __webpack_require__(4),
+var _require2 = __webpack_require__(5),
     distortion = _require2.distortion,
     distortionSlider = _require2.distortionSlider;
 
-var _require3 = __webpack_require__(2),
+var _require3 = __webpack_require__(3),
     delay = _require3.delay,
     delayFeedbackDial = _require3.delayFeedbackDial,
     delayWetDial = _require3.delayWetDial;
 
-var _require4 = __webpack_require__(7),
+var _require4 = __webpack_require__(8),
     oscillator = _require4.oscillator;
 
-var _require5 = __webpack_require__(8),
+var _require5 = __webpack_require__(9),
     waveform = _require5.waveform,
     fft = _require5.fft;
 
-var _require6 = __webpack_require__(10),
+var _require6 = __webpack_require__(11),
     playNote = _require6.playNote,
     releaseNote = _require6.releaseNote;
 
-var _require7 = __webpack_require__(9),
+var _require7 = __webpack_require__(10),
     sequencer = _require7.sequencer,
     loop = _require7.loop;
 
-var _require8 = __webpack_require__(1),
+var _require8 = __webpack_require__(2),
     chorus = _require8.chorus,
     chorusDelayTime = _require8.chorusDelayTime,
     chorusWet = _require8.chorusWet,
     chorusFeedback = _require8.chorusFeedback,
     chorusDepth = _require8.chorusDepth;
 
-var _require9 = __webpack_require__(5),
+var _require9 = __webpack_require__(6),
     drums = _require9.drums,
     drumSequencer = _require9.drumSequencer;
 
-var envelope = __webpack_require__(6);
-var bassVolume = __webpack_require__(13);
-var synthVolume = __webpack_require__(13);
+var envelope = __webpack_require__(7);
+var bassVolume = __webpack_require__(0);
+var synthVolume = __webpack_require__(0);
 
-var _require10 = __webpack_require__(0),
+var _require10 = __webpack_require__(1),
     bassSequencer = _require10.bassSequencer,
     bassLoop = _require10.bassLoop,
     bassSynth = _require10.bassSynth;
@@ -894,20 +908,6 @@ window.addEventListener('keydown', function (e) {
 window.addEventListener('keyup', function (e) {
     return releaseNote(e, oscillator);
 });
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var volume = new Tone.Volume({
-    volume: 0,
-    mute: false
-});
-
-module.exports = volume;
 
 /***/ })
 /******/ ]);
