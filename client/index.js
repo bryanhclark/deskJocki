@@ -16,6 +16,8 @@ const { bassSequencer, bassLoop, bassSynth } = require('./components/bassSynth')
 // const analyser = context.createAnalyser();
 
 
+
+
 //MAIN INTRUMENT CHAIN
 oscillator.chain(chorus, delay, synthVolume, waveform, Tone.Master)
 
@@ -57,9 +59,10 @@ globalTempoSlider.on('change', (val) => {
 })
 
 //GLOBAL VOLUME CONTROLS
+
 const globalVolumeSlider = new Nexus.Slider('#globalVolumeSlider',
     {
-        min: -24,
+        min: -64,
         max: 6
     })
 
@@ -95,6 +98,7 @@ synthVolumeSlider.colorize("accent", "#FFE066")
 synthVolumeSlider.colorize('fill', "#363a3a")
 synthMuteButton.colorize("accent", "#FFE066")
 synthMuteButton.colorize('fill', "#363a3a")
+
 
 synthMuteButton.on('change', (val) => {
     if (val === 0) synthVolume.mute = true

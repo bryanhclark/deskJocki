@@ -63,302 +63,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var volume = new Tone.Volume({
-    volume: 0,
-    mute: false
-});
-
-module.exports = volume;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _ref;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var bassSequencer = new Nexus.Sequencer('#bassSequencer', {
-    size: [800, 350],
-    mode: 'toggle',
-    rows: 14,
-    columns: 32
-});
-
-//SEQUENCER COLOR OPTIONS
-bassSequencer.colorize("accent", "#0D86BA");
-bassSequencer.colorize('fill', "#363a3a");
-
-var bassLoop = [["C1", '8n'], ['D1', '8n'], ['E1', '8n'], ['F1', '8n'], ['G1', '8n'], ['A1', '8n'], ['B1', '8n'], ["C2", '8n'], ['D2', '8n'], ['E2', '8n'], ['F2', '8n'], ['G2', '8n'], ['A2', '8n'], ['B2', '8n']];
-
-var bassSynth = new Tone.MonoSynth((_ref = {
-    "volume": 7,
-    filter: {
-        Q: 2,
-        type: "lowshelf",
-        frequency: 200,
-        gain: -24
-    }
-}, _defineProperty(_ref, 'filter', {
-    type: "lowpass",
-    Q: 7,
-    frequency: 10000,
-    gain: -24
-}), _defineProperty(_ref, "envelope", {
-    "attack": 0.001,
-    "decay": 1,
-    "sustain": 0.4,
-    "release": 0.1
-}), _defineProperty(_ref, "filterEnvelope", {
-    "attack": 0.001,
-    "decay": 0.31,
-    "sustain": 1,
-    "baseFrequency": 150,
-    "octaves": 2.6
-}), _ref));
-
-module.exports = { bassSequencer: bassSequencer, bassLoop: bassLoop, bassSynth: bassSynth };
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var chorus = new Tone.Chorus({
-    frequency: 1.5, //frequency of the lfo
-    delayTime: 8, //2 to 20
-    depth: 0.4, //0 to 1
-    feedback: 0.3, //0 tp 1
-    type: 'sine',
-    spread: 180, //0 to 360
-    wet: 0.3 //0 to 1
-});
-
-var chorusDelayTime = new Nexus.Slider('#chorusDelaySlider');
-var chorusWet = new Nexus.Slider('#chorusWet');
-var chorusFeedback = new Nexus.Slider('#chorusFeedback', {
-    min: 0,
-    max: 0.5
-});
-var chorusDepth = new Nexus.Slider('#chorusDepth');
-
-chorusDelayTime.colorize("accent", "#FFE066");
-chorusDelayTime.colorize('fill', "#363a3a");
-chorusWet.colorize("accent", "#FFE066");
-chorusWet.colorize('fill', "#363a3a");
-chorusFeedback.colorize("accent", "#FFE066");
-chorusFeedback.colorize('fill', "#363a3a");
-chorusDepth.colorize("accent", "#FFE066");
-chorusDepth.colorize('fill', "#363a3a");
-
-module.exports = {
-    chorus: chorus,
-    chorusDelayTime: chorusDelayTime,
-    chorusWet: chorusWet,
-    chorusFeedback: chorusFeedback,
-    chorusDepth: chorusDepth
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var delay = new Tone.PingPongDelay({
-    delayTime: '8n',
-    feedback: 0.0,
-    wet: 0.0
-});
-
-var delayFeedbackDial = new Nexus.Slider('#delayFeedbackDiv');
-var delayWetDial = new Nexus.Slider('#delayWetDiv');
-
-delayFeedbackDial.colorize("accent", "#FFE066");
-delayFeedbackDial.colorize('fill', "#363a3a");
-delayWetDial.colorize("accent", "#FFE066");
-delayWetDial.colorize('fill', "#363a3a");
-
-module.exports = {
-    delay: delay,
-    delayFeedbackDial: delayFeedbackDial,
-    delayWetDial: delayWetDial
-};
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var attackDial = new Nexus.Slider('#attackDial');
-var decayDial = new Nexus.Slider('#decayDial');
-var sustainDial = new Nexus.Slider('#sustainDial');
-var releaseDial = new Nexus.Slider('#releaseDial');
-
-attackDial.colorize("accent", "#FFE066");
-attackDial.colorize('fill', "#363a3a");
-decayDial.colorize("accent", "#FFE066");
-decayDial.colorize('fill', "#363a3a");
-sustainDial.colorize("accent", "#FFE066");
-sustainDial.colorize('fill', "#363a3a");
-releaseDial.colorize("accent", "#FFE066");
-releaseDial.colorize('fill', "#363a3a");
-
-module.exports = {
-    attackDial: attackDial,
-    decayDial: decayDial,
-    sustainDial: sustainDial,
-    releaseDial: releaseDial
-};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var distortion = new Tone.Distortion({
-    distortion: 0, // 0 to 1;
-    oversample: "none"
-});
-
-var distortionSlider = new Nexus.Slider('#distortionSlider');
-
-distortionSlider.on('change', function (val) {
-
-    distortion.distortion = val;
-    console.log(distortion.distortion);
-});
-
-distortionSlider.colorize("accent", "#0D86BA");
-distortionSlider.colorize('fill', "#363a3a");
-
-module.exports = { distortion: distortion, distortionSlider: distortionSlider };
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _require = __webpack_require__(12),
-    reverb = _require.reverb,
-    reverbRoomSizeSlider = _require.reverbRoomSizeSlider;
-
-var drumVolume = __webpack_require__(0);
-
-var _require2 = __webpack_require__(9),
-    waveform = _require2.waveform,
-    fft = _require2.fft;
-
-var drums = new Tone.Players({
-    "hihat0": "./samples/hihat.wav",
-    "hihat1": "./samples/hihat2.wav",
-    "hihat2": "./samples/hihat3.wav",
-    "snare0": "./samples/snare.wav",
-    "snare1": "./samples/snare2.wav",
-    "snare2": "./samples/snare3.wav",
-    "kick0": "./samples/kick.wav",
-    "kick1": "./samples/kick2.wav",
-    "kick2": "samples/kick3.wav"
-
-}, function () {
-    console.log('loaded');
-}).chain(reverb, drumVolume, waveform, Tone.Master);
-
-var drumSequencer = new Nexus.Sequencer('#drumMachine', {
-    'size': [800, 200],
-    'mode': 'toggle',
-    'rows': 9,
-    'columns': 32
-});
-
-var drumVolumeSlider = new Nexus.Slider('#drumVolumeSlider', {
-    min: -64,
-    max: 6
-});
-
-drumVolumeSlider.on('change', function (val) {
-    drumVolume.volume.value = val;
-});
-
-var drumMuteButton = new Nexus.RadioButton('#drumMuteButton', {
-    'numberOfButtons': 1
-});
-
-drumMuteButton.on('change', function (val) {
-    if (val === 0) drumVolume.mute = true;else drumVolume.mute = false;
-});
-
-drumSequencer.colorize("accent", "#D81135");
-drumSequencer.colorize('fill', "#363a3a");
-
-drumVolumeSlider.colorize("accent", "#D81135");
-drumVolumeSlider.colorize('fill', "#363a3a");
-drumMuteButton.colorize("accent", "#D81135");
-drumMuteButton.colorize('fill', "#363a3a");
-
-module.exports = { drums: drums, drumSequencer: drumSequencer, drumVolume: drumVolume };
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var envelope = new Tone.AmplitudeEnvelope({
-    "attack": 0.11,
-    "decay": 0.21,
-    "sustain": 0.09,
-    "release": 1.2
-});
-
-module.exports = envelope;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var oscillator = new Tone.PolySynth(6, Tone.Synth, {
-    oscillator: {
-        partials: [0, 2, 3, 4]
-    },
-    "envelope": {
-        'attack': 0.11,
-        'decay': 0.21,
-        'sustain': 0.09,
-        'release': 1.2
-    }
-});
-
-module.exports = { oscillator: oscillator };
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -422,6 +131,300 @@ module.exports = {
 };
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _ref;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var bassSequencer = new Nexus.Sequencer('#bassSequencer', {
+    size: [800, 350],
+    mode: 'toggle',
+    rows: 14,
+    columns: 32
+});
+
+//SEQUENCER COLOR OPTIONS
+bassSequencer.colorize("accent", "#0D86BA");
+bassSequencer.colorize('fill', "#363a3a");
+bassSequencer.colorize('light', "#0D86BA");
+bassSequencer.colorize('mediumLight', "#FFF");
+
+var bassLoop = [["C1", '8n'], ['D1', '8n'], ['E1', '8n'], ['F1', '8n'], ['G1', '8n'], ['A1', '8n'], ['B1', '8n'], ["C2", '8n'], ['D2', '8n'], ['E2', '8n'], ['F2', '8n'], ['G2', '8n'], ['A2', '8n'], ['B2', '8n']];
+
+var bassSynth = new Tone.MonoSynth((_ref = {
+    "volume": 7,
+    filter: {
+        Q: 2,
+        type: "lowshelf",
+        frequency: 200,
+        gain: -24
+    }
+}, _defineProperty(_ref, 'filter', {
+    type: "lowpass",
+    Q: 7,
+    frequency: 10000,
+    gain: -24
+}), _defineProperty(_ref, "envelope", {
+    "attack": 0.001,
+    "decay": 1,
+    "sustain": 0.4,
+    "release": 0.1
+}), _defineProperty(_ref, "filterEnvelope", {
+    "attack": 0.001,
+    "decay": 0.31,
+    "sustain": 1,
+    "baseFrequency": 150,
+    "octaves": 2.6
+}), _ref));
+
+module.exports = { bassSequencer: bassSequencer, bassLoop: bassLoop, bassSynth: bassSynth };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var bassVolume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = bassVolume;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var chorus = new Tone.Chorus({
+    frequency: 1.5, //frequency of the lfo
+    delayTime: 8, //2 to 20
+    depth: 0.4, //0 to 1
+    feedback: 0.3, //0 tp 1
+    type: 'sine',
+    spread: 180, //0 to 360
+    wet: 0.3 //0 to 1
+});
+
+var chorusDelayTime = new Nexus.Slider('#chorusDelaySlider');
+var chorusWet = new Nexus.Slider('#chorusWet');
+var chorusFeedback = new Nexus.Slider('#chorusFeedback', {
+    min: 0,
+    max: 0.5
+});
+var chorusDepth = new Nexus.Slider('#chorusDepth');
+
+chorusDelayTime.colorize("accent", "#FFE066");
+chorusDelayTime.colorize('fill', "#363a3a");
+chorusWet.colorize("accent", "#FFE066");
+chorusWet.colorize('fill', "#363a3a");
+chorusFeedback.colorize("accent", "#FFE066");
+chorusFeedback.colorize('fill', "#363a3a");
+chorusDepth.colorize("accent", "#FFE066");
+chorusDepth.colorize('fill', "#363a3a");
+
+module.exports = {
+    chorus: chorus,
+    chorusDelayTime: chorusDelayTime,
+    chorusWet: chorusWet,
+    chorusFeedback: chorusFeedback,
+    chorusDepth: chorusDepth
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var delay = new Tone.PingPongDelay({
+    delayTime: '8n',
+    feedback: 0.0,
+    wet: 0.0
+});
+
+var delayFeedbackDial = new Nexus.Slider('#delayFeedbackDiv');
+var delayWetDial = new Nexus.Slider('#delayWetDiv');
+
+delayFeedbackDial.colorize("accent", "#FFE066");
+delayFeedbackDial.colorize('fill', "#363a3a");
+delayWetDial.colorize("accent", "#FFE066");
+delayWetDial.colorize('fill', "#363a3a");
+
+module.exports = {
+    delay: delay,
+    delayFeedbackDial: delayFeedbackDial,
+    delayWetDial: delayWetDial
+};
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var attackDial = new Nexus.Slider('#attackDial');
+var decayDial = new Nexus.Slider('#decayDial');
+var sustainDial = new Nexus.Slider('#sustainDial');
+var releaseDial = new Nexus.Slider('#releaseDial');
+
+attackDial.colorize("accent", "#FFE066");
+attackDial.colorize('fill', "#363a3a");
+decayDial.colorize("accent", "#FFE066");
+decayDial.colorize('fill', "#363a3a");
+sustainDial.colorize("accent", "#FFE066");
+sustainDial.colorize('fill', "#363a3a");
+releaseDial.colorize("accent", "#FFE066");
+releaseDial.colorize('fill', "#363a3a");
+
+module.exports = {
+    attackDial: attackDial,
+    decayDial: decayDial,
+    sustainDial: sustainDial,
+    releaseDial: releaseDial
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var distortion = new Tone.Distortion({
+    distortion: 0, // 0 to 1;
+    oversample: "none"
+});
+
+var distortionSlider = new Nexus.Slider('#distortionSlider');
+
+distortionSlider.on('change', function (val) {
+
+    distortion.distortion = val;
+    console.log(distortion.distortion);
+});
+
+distortionSlider.colorize("accent", "#0D86BA");
+distortionSlider.colorize('fill', "#363a3a");
+
+module.exports = { distortion: distortion, distortionSlider: distortionSlider };
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(13),
+    reverb = _require.reverb,
+    reverbRoomSizeSlider = _require.reverbRoomSizeSlider;
+
+var drumVolume = __webpack_require__(14);
+
+var _require2 = __webpack_require__(0),
+    waveform = _require2.waveform,
+    fft = _require2.fft;
+
+var drums = new Tone.Players({
+    "hihat0": "./samples/hihat.wav",
+    "hihat1": "./samples/hihat2.wav",
+    "hihat2": "./samples/hihat3.wav",
+    "snare0": "./samples/snare.wav",
+    "snare1": "./samples/snare2.wav",
+    "snare2": "./samples/snare3.wav",
+    "kick0": "./samples/kick.wav",
+    "kick1": "./samples/kick2.wav",
+    "kick2": "samples/kick3.wav"
+
+}, function () {
+    console.log('loaded');
+}).chain(reverb, drumVolume, waveform, Tone.Master);
+
+var drumSequencer = new Nexus.Sequencer('#drumMachine', {
+    'size': [800, 200],
+    'mode': 'toggle',
+    'rows': 9,
+    'columns': 32
+});
+
+var drumVolumeSlider = new Nexus.Slider('#drumVolumeSlider', {
+    min: -64,
+    max: 6
+});
+
+drumVolumeSlider.on('change', function (val) {
+    drumVolume.volume.value = val;
+});
+
+var drumMuteButton = new Nexus.RadioButton('#drumMuteButton', {
+    'numberOfButtons': 1
+});
+
+drumMuteButton.on('change', function (val) {
+    if (val === 0) drumVolume.mute = true;else drumVolume.mute = false;
+});
+
+drumSequencer.colorize("accent", "#D81135");
+drumSequencer.colorize('fill', "#363a3a");
+
+drumVolumeSlider.colorize("accent", "#D81135");
+drumVolumeSlider.colorize('fill', "#363a3a");
+drumMuteButton.colorize("accent", "#D81135");
+drumMuteButton.colorize('fill', "#363a3a");
+drumSequencer.colorize('mediumLight', "#FFF");
+
+module.exports = { drums: drums, drumSequencer: drumSequencer, drumVolume: drumVolume };
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var envelope = new Tone.AmplitudeEnvelope({
+    "attack": 0.11,
+    "decay": 0.21,
+    "sustain": 0.09,
+    "release": 1.2
+});
+
+module.exports = envelope;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var oscillator = new Tone.PolySynth(6, Tone.Synth, {
+    oscillator: {
+        partials: [0, 2, 3, 4]
+    },
+    "envelope": {
+        'attack': 0.11,
+        'decay': 0.21,
+        'sustain': 0.09,
+        'release': 1.2
+    }
+});
+
+module.exports = { oscillator: oscillator };
+
+/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -439,6 +442,7 @@ var sequencer = new Nexus.Sequencer("#sequencer", {
 //SEQUENCER COLOR OPTIONS
 sequencer.colorize("accent", "#FFE066");
 sequencer.colorize('fill', "#363a3a");
+sequencer.colorize('mediumLight', "#FFF");
 
 //INVERTED BPM SLIDER
 
@@ -455,6 +459,20 @@ module.exports = {
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var synthVolume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = synthVolume;
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -631,7 +649,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -655,35 +673,49 @@ reverbRoomSizeSlider.colorize('fill', "#363a3a");
 module.exports = { reverb: reverb, reverbRoomSizeSlider: reverbRoomSizeSlider };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _require = __webpack_require__(4),
+var volume = new Tone.Volume({
+    volume: 0,
+    mute: false
+});
+
+module.exports = volume;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _require = __webpack_require__(5),
     attackDial = _require.attackDial,
     decayDial = _require.decayDial,
     sustainDial = _require.sustainDial,
     releaseDial = _require.releaseDial;
 
-var _require2 = __webpack_require__(5),
+var _require2 = __webpack_require__(6),
     distortion = _require2.distortion,
     distortionSlider = _require2.distortionSlider;
 
-var _require3 = __webpack_require__(3),
+var _require3 = __webpack_require__(4),
     delay = _require3.delay,
     delayFeedbackDial = _require3.delayFeedbackDial,
     delayWetDial = _require3.delayWetDial;
 
-var _require4 = __webpack_require__(8),
+var _require4 = __webpack_require__(9),
     oscillator = _require4.oscillator;
 
-var _require5 = __webpack_require__(9),
+var _require5 = __webpack_require__(0),
     waveform = _require5.waveform,
     fft = _require5.fft;
 
-var _require6 = __webpack_require__(11),
+var _require6 = __webpack_require__(12),
     playNote = _require6.playNote,
     releaseNote = _require6.releaseNote;
 
@@ -691,20 +723,20 @@ var _require7 = __webpack_require__(10),
     sequencer = _require7.sequencer,
     loop = _require7.loop;
 
-var _require8 = __webpack_require__(2),
+var _require8 = __webpack_require__(3),
     chorus = _require8.chorus,
     chorusDelayTime = _require8.chorusDelayTime,
     chorusWet = _require8.chorusWet,
     chorusFeedback = _require8.chorusFeedback,
     chorusDepth = _require8.chorusDepth;
 
-var _require9 = __webpack_require__(6),
+var _require9 = __webpack_require__(7),
     drums = _require9.drums,
     drumSequencer = _require9.drumSequencer;
 
-var bassVolume = __webpack_require__(14);
-var synthVolume = __webpack_require__(15);
-var envelope = __webpack_require__(7);
+var bassVolume = __webpack_require__(2);
+var synthVolume = __webpack_require__(11);
+var envelope = __webpack_require__(8);
 
 var _require10 = __webpack_require__(1),
     bassSequencer = _require10.bassSequencer,
@@ -757,8 +789,9 @@ globalTempoSlider.on('change', function (val) {
 });
 
 //GLOBAL VOLUME CONTROLS
+
 var globalVolumeSlider = new Nexus.Slider('#globalVolumeSlider', {
-    min: -24,
+    min: -64,
     max: 6
 });
 
@@ -908,34 +941,6 @@ window.addEventListener('keydown', function (e) {
 window.addEventListener('keyup', function (e) {
     return releaseNote(e, oscillator);
 });
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var bassVolume = new Tone.Volume({
-    volume: 0,
-    mute: false
-});
-
-module.exports = bassVolume;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var synthVolume = new Tone.Volume({
-    volume: 0,
-    mute: false
-});
-
-module.exports = synthVolume;
 
 /***/ })
 /******/ ]);

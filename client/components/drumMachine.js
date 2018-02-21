@@ -56,6 +56,7 @@ drumVolumeSlider.colorize("accent", "#D81135")
 drumVolumeSlider.colorize('fill', "#363a3a")
 drumMuteButton.colorize("accent", "#D81135")
 drumMuteButton.colorize('fill', "#363a3a")
+drumSequencer.colorize('mediumLight', "#FFF")
 
 
 module.exports = { drums, drumSequencer, drumVolume }

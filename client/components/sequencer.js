@@ -9,6 +9,7 @@ const sequencer = new Nexus.Sequencer("#sequencer", {
 //SEQUENCER COLOR OPTIONS
 sequencer.colorize("accent", "#FFE066")
 sequencer.colorize('fill', "#363a3a")
+sequencer.colorize('mediumLight', "#FFF")
 
 
 //INVERTED BPM SLIDER

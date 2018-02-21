@@ -5,9 +5,13 @@ const bassSequencer = new Nexus.Sequencer('#bassSequencer', {
     columns: 32
 })
 
+
+
 //SEQUENCER COLOR OPTIONS
 bassSequencer.colorize("accent", "#0D86BA")
 bassSequencer.colorize('fill', "#363a3a")
+bassSequencer.colorize('light', "#0D86BA")
+bassSequencer.colorize('mediumLight', "#FFF")
 
 const bassLoop = [["C1", '8n'], ['D1', '8n'], ['E1', '8n'], ['F1', '8n'], ['G1', '8n'], ['A1', '8n'], ['B1', '8n'], ["C2", '8n'], ['D2', '8n'], ['E2', '8n'], ['F2', '8n'], ['G2', '8n'], ['A2', '8n'], ['B2', '8n']]
 
