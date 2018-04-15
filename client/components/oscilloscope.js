@@ -31,9 +31,8 @@ function sizeCanvases() {
     canvasWidth = $("#waveform").width();
     canvasHeight = $("#waveform").height();
     waveContext.canvas.width = canvasWidth;
-    // fftContext.canvas.width = canvasWidth;
+
     waveContext.canvas.height = canvasHeight;
-    // fftContext.canvas.height = canvasHeight;
     //make the gradient
     waveformGradient = waveContext.createLinearGradient(0, 0, canvasWidth, canvasHeight);
     waveformGradient.addColorStop(0, "#ddd");
@@ -43,7 +42,6 @@ sizeCanvases();
 $(window).resize(sizeCanvases);
 function loop() {
     requestAnimationFrame(loop);
-    //get the fft data and draw it
 
     //get the waveform valeus and draw it
     var waveformValues = waveform.getValue();

@@ -129,7 +129,6 @@ chorusDepth.on('change', (val) => {
     chorus.depth = val
 })
 
-//MAIN START/STOP CONTROLS
 
 
 //ADSR DIAL CONTROLS
